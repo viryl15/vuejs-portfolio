@@ -5,7 +5,7 @@
       <Description :user="user" :content="findSlug('description')" :links="findSlug('links')" />
       <Experience :content="findSlug('experiences')" />
       <Skills v-if="skills.length" :skills="skills" />
-<!--      <Projects :content="findSlug('projects')" />-->
+      <Projects :projects="projects" />
       <Footer :user="user" :links="findSlug('links')" />
     </div>
   </transition>
@@ -16,7 +16,7 @@ import LandingPage from "./components/LandingPage.vue";
 import Description from "./components/Description.vue";
 import Experience from "./components/Experience.vue";
 import Skills from "./components/Skills.vue";
-// import Projects from "./components/Projects.vue";
+import Projects from "./components/Projects.vue";
 import Footer from "./components/Footer.vue";
 
 import { bucket } from "./cosmic.js";
@@ -28,7 +28,7 @@ export default {
     Description,
     Experience,
     Skills,
-    // Projects,
+    Projects,
     Footer,
   },
   data: () => ({
@@ -36,8 +36,20 @@ export default {
     user: {},
     posts: [],
     skills: [],
+    projects: [],
   }),
   methods: {
+    fetchProjects() {
+      const params = {
+        query: {
+          type: 'projects',
+          // locale: 'en' // optional, if localization set on Objects
+        },
+        props: 'slug,title,content,metadata', // get only what you need
+        sort: 'delivery_date' // optional, defaults to order in dashboard
+      }
+      return bucket.getObjects(params);
+    },
     fetchPosts() {
       const params = {
         query: {
@@ -90,11 +102,12 @@ export default {
   created() {
     document.body.classList.add("loading");
 
-    Promise.all([this.fetchPosts(), this.fetchSkills(), this.fetchUser()]).then(([posts, skills, user_data]) => {
+    Promise.all([this.fetchPosts(), this.fetchSkills(), this.fetchProjects(), this.fetchUser()]).then(([posts, skills, projects, user_data]) => {
       user_data = this.extractFirstObject(user_data);
       this.posts = posts.objects;
-      console.log("user skills ==>> ", skills.objects)
+      console.log("user skills ==>> ", projects.objects)
       this.skills = skills.objects;
+      this.projects = projects.objects;
       this.user = {
         name: user_data.metadata.name,
         status: user_data.metadata.status,

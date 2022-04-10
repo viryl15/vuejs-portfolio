@@ -2,7 +2,7 @@
 
 > Portfolio template using VueJs framework, CosmicJS API and Bootstrap
 
-<p align="center"><strong> Live demo with my personnal data <a href="https://hugobollon.me">here</a> ! </strong></p>
+<p align="center"><strong> Live demo with my personnal data <a href="https://viryl15.github.io/vuejs-portfolio/">here</a> ! </strong></p>
 
 <img align="center" src="doc/portfolio-vuejs_demo.gif" alt="portfolio-vuejs preview"></img>
 
@@ -68,9 +68,9 @@ Now, you can customize it with your data through CosmicJS interface!
 
 👤 **Dylan Zambou**
 
-* Github: [@viryl](https://github.com/viryl15)
+* Github: [@viryl15](https://github.com/viryl15)
 * LinkedIn: [@dylan](https://www.linkedin.com/in/rovel-dylan-tematio-zambou-596303172/)
-* Portfolio: [hugobollon.me](https://www.dylanzambou.me)
+* Portfolio: [viryl15](https://viryl15.github.io/vuejs-portfolio/)
 
 ## 🤝 Contributing
 
