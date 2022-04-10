@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vue-deploy/'
+    publicPath: '/vuejs-portfolio/'
 }

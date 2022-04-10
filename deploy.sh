@@ -13,6 +13,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:viryl15/vuejs-portfolio.git main:gh-pages
+git push -f git@github.com:viryl15/vuejs-portfolio.git master:gh-pages
 
 cd -
