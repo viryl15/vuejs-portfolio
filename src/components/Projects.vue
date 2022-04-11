@@ -3,22 +3,22 @@
     <AnimateOnVisible name="fadeDown" :duration="1">
 		<Title
 		class="title"
-		:title="content.metadata.title"
-		:description="content.metadata.description"
+		:title="'MY PROJECTS'"
+		:description="'THIS IS MY STORY'"
 		/>
     </AnimateOnVisible>
 
     <div class="container-fluid center-block">
       <article class="content text-center">
     
-		<AnimateOnVisible class="timeline mx-auto" v-for="(post, index) in content.metadata.items" :key="index" name="fadeLeft" :duration="0.5">
+		<AnimateOnVisible class="timeline mx-auto" v-for="(post, index) in projects" :key="index" name="fadeLeft" :duration="0.5">
 			<vue-timeline-update
-        :date="new Date(post.date)"
-        :title="post.title"
-        :description="post.content"
-        :thumbnail="getImgUrl(post.image)"
-        :color="post.color"
-        :category="post.tag"
+        :date="new Date(post.metadata.delivery_date)"
+        :title="post.metadata.title"
+        :description="post.metadata.description"
+        :thumbnail="post.metadata.image.url"
+        :color="post.metadata.color"
+        :category="post.metadata.tag"
         icon="code"
       />
 		</AnimateOnVisible>
@@ -32,13 +32,13 @@ import Title from "./Title.vue";
 
 export default {
   name: "Projects",
-  props: ['content'],
+  props: ['projects'],
   components: {
     Title
   },
   methods: {
     getImgUrl(img) {
-      if(img == undefined || img == "")
+      if(img === undefined || img === "")
         return ""
       if(/.*:\/\/.*/.exec(img) !== null)
         return img
