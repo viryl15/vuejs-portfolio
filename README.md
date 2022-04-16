@@ -69,8 +69,10 @@ Now, you can customize it with your data through CosmicJS interface!
 👤 **Dylan Zambou**
 
 * Github: [@viryl15](https://github.com/viryl15)
-* LinkedIn: [@dylan](https://www.linkedin.com/in/rovel-dylan-tematio-zambou-596303172/)
+* Gitlab: [@viryl15](https://gitlab.com/viryl15)
+* LinkedIn: [@viryl](https://www.linkedin.com/in/rovel-dylan-tematio-zambou-596303172/)
 * Portfolio: [viryl15](https://viryl15.github.io/vuejs-portfolio/)
+* Twitter: [@viryl3](https://twitter.com/Viryl3)
 
 ## 🤝 Contributing
 
