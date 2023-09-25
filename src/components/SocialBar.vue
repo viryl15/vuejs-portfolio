@@ -2,7 +2,7 @@
   <div class="social-wrap">
     <ul class="social-bar">
       <li>
-        <a :href="links.metadata.twitter" target="_blank">
+        <a href="https://twitter.com/Viryl3" target="_blank">
           <font-awesome-icon class="icon" :icon="['fab', 'twitter-square']" />
         </a>
       </li>
