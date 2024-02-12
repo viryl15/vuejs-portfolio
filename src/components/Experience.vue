@@ -3,8 +3,8 @@
     <AnimateOnVisible name="fadeDown" :duration="1">
       <Title
         class="title"
-        :title="content.metadata.title"
-        :description="content.metadata.description"
+        :title="content.title"
+        :description="content.description"
       />
     </AnimateOnVisible>
 
@@ -12,12 +12,12 @@
 		<div class="container-fluid">
 			<div class="row">
 				<ExperienceColumn
-					:posts="content.metadata.academic"
+					:posts="content.academic"
 					title="Education"
 					class="col-12 col-md left"
 				/>
 				<ExperienceColumn
-					:posts="content.metadata.professional"
+					:posts="content.professional"
 					title="Professional"
 					class="col-12 col-md right"
 				/>

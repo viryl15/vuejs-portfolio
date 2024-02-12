@@ -9,8 +9,8 @@
                 <div class="row d-flex flex-wrap align-items-center">
                     <div class="col-md-2 m-auto pb-4" v-for="(skill, index) in skills" :key="index">
                         <AnimateOnVisible name="bounce">
-                            <img id="imgLogo" class="img-responsive mx-auto d-block" :src="skill.metadata.logo.url" :alt="skill.metadata.title"/>
-                            <div id="divAlt" class="altCaption text-center">{{skill.metadata.title}}</div>
+                            <img id="imgLogo" class="img-responsive mx-auto d-block" :src="getImgUrl(skill.img)" :alt="skill.title"/>
+                            <div id="divAlt" class="altCaption text-center">{{skill.title}}</div>
                         </AnimateOnVisible>
                     </div>
                 </div>
