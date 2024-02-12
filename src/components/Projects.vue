@@ -13,12 +13,12 @@
     
 		<AnimateOnVisible class="timeline mx-auto" v-for="(post, index) in projects" :key="index" name="fadeLeft" :duration="0.5">
 			<vue-timeline-update
-        :date="new Date(post.metadata.delivery_date)"
-        :title="post.metadata.title"
-        :description="post.metadata.description"
-        :thumbnail="post.metadata.image.url"
-        :color="post.metadata.color"
-        :category="post.metadata.tag"
+        :date="new Date(post.delivery_date)"
+        :title="post.title"
+        :description="post.description"
+        :thumbnail="getImgUrl(post.image)"
+        :color="post.color"
+        :category="post.tag"
         icon="code"
       />
 		</AnimateOnVisible>
