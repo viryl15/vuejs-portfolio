@@ -8,7 +8,9 @@
       <div class="section-content">
         <div class="container-fluid">
           <div class="row justify-content-center">
-            <Photo :user="user" />
+            <div class="col-auto">
+              <Photo :user="user" />
+            </div>
           </div>
           <div class="row">
             <div class="col-md-7 mr-auto card-mobile">

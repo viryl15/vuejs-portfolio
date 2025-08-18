@@ -32,7 +32,6 @@ import userData from "./data.js";
 const isLoaded = ref(true);
 
 const userDataComputed = computed(() => {
-  console.log("userData ==>. ", userData);
   return userData;
 });
 </script>
