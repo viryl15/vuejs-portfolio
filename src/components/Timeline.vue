@@ -3,15 +3,19 @@
     <div class="timeline-update-inner">
       <div class="timeline-update-header">
         <div class="timeline-update-time">
-          <div class="timeline-icon">
+          <div class="timeline-icon" :style="{ background: colorGradient }">
             <font-awesome-icon :icon="['fas', 'code']" />
           </div>
           <span class="time-text">{{ timeAgo }}</span>
         </div>
         <div class="timeline-update-tags">
-          <span v-for="tag in tagArray" :key="tag" class="tag">{{
-            tag.trim()
-          }}</span>
+          <span
+            v-for="tag in tagArray"
+            :key="tag"
+            class="tag"
+            :style="{ background: colorGradient }"
+            >{{ tag.trim() }}</span
+          >
         </div>
         <h3 class="timeline-update-title">{{ title }}</h3>
       </div>
@@ -77,6 +81,19 @@ export default {
     tagArray() {
       return this.category ? this.category.split("|") : [];
     },
+    colorGradient() {
+      const colorMap = {
+        blue: "linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)",
+        green: "linear-gradient(135deg, #10b981 0%, #047857 100%)",
+        orange: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+        purple: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
+        yellow: "linear-gradient(135deg, #eab308 0%, #ca8a04 100%)",
+        white: "linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%)",
+        grey: "linear-gradient(135deg, #6b7280 0%, #4b5563 100%)",
+        gray: "linear-gradient(135deg, #6b7280 0%, #4b5563 100%)",
+      };
+      return colorMap[this.color] || colorMap.blue;
+    },
   },
 };
 </script>
@@ -106,7 +123,7 @@ export default {
     padding: 2rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-left: 60px;
+    margin-left: 80px;
   }
 
   .timeline-update-header {
@@ -114,14 +131,13 @@ export default {
 
     .timeline-update-time {
       position: absolute;
-      left: -80px;
+      left: -100px;
       top: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       .timeline-icon {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border-radius: 50%;
         width: 40px;
@@ -134,10 +150,11 @@ export default {
       }
 
       .time-text {
-        font-size: 0.8rem;
-        color: map.get($colors, secondary);
+        font-size: 1.2rem;
+        color: rgba(173, 216, 255, 0.95);
         text-align: center;
         white-space: nowrap;
+        font-weight: 500;
       }
     }
 
@@ -146,11 +163,10 @@ export default {
 
       .tag {
         display: inline-block;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 0.25rem 0.75rem;
+        padding: 0.4rem 1rem;
         border-radius: 15px;
-        font-size: 0.7rem;
+        font-size: 1rem;
         font-weight: 600;
         margin-right: 0.5rem;
         margin-bottom: 0.5rem;
@@ -160,7 +176,7 @@ export default {
     }
 
     .timeline-update-title {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
       color: map.get($colors, light);
       margin-bottom: 1.5rem;
@@ -184,7 +200,7 @@ export default {
   .timeline-update-description {
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.8;
-    font-size: 0.95rem;
+    font-size: 1.6rem;
 
     :deep(a) {
       color: #667eea;
