@@ -3,14 +3,14 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, mode }) => ({
   plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: process.env.NODE_ENV === 'production' ? '/vuejs-portfolio/' : '/',
+  base: command === 'build' ? '/vuejs-portfolio/' : '/',
   css: {
     preprocessorOptions: {
       scss: {
@@ -20,4 +20,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))
