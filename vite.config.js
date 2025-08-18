@@ -11,6 +11,10 @@ export default defineConfig(({ command, mode }) => ({
     }
   },
   base: command === 'build' ? '/vuejs-portfolio/' : '/',
+  preview: {
+    port: 4173,
+    host: true
+  },
   css: {
     preprocessorOptions: {
       scss: {
