@@ -1,4 +1,4 @@
- <template>
+<template>
   <header class="header parallax">
     <div class="name">
       <div class="wrapper-name">
@@ -17,16 +17,14 @@
 <script>
 export default {
   name: "Landing-Page",
-  props: ["user"]
+  props: ["user"],
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/styles/constants.scss";
-
 .header {
   padding: 20px;
-  background-color: map-get($colors, dark);
+  background-color: map.get($colors, dark);
 }
 
 .parallax {
@@ -71,7 +69,7 @@ export default {
   }
 }
 
-@media (min-width: #{map-get($breakpoints, small)}) {
+@media (min-width: #{map.get($breakpoints, small)}) {
   .name {
     .wrapper-name {
       width: 55%;
@@ -85,7 +83,7 @@ export default {
     }
   }
 }
-@media (min-width: #{map-get($breakpoints, medium)}) {
+@media (min-width: #{map.get($breakpoints, medium)}) {
   .name {
     .wrapper-name {
       width: 450px;

@@ -8,22 +8,22 @@
       />
     </AnimateOnVisible>
 
-	<AnimateOnVisible name="fadeUp" :duration="1">
-		<div class="container-fluid">
-			<div class="row">
-				<ExperienceColumn
-					:posts="content.academic"
-					title="Education"
-					class="col-12 col-md left"
-				/>
-				<ExperienceColumn
-					:posts="content.professional"
-					title="Professional"
-					class="col-12 col-md right"
-				/>
-			</div>
-		</div>
-	</AnimateOnVisible>
+    <AnimateOnVisible name="fadeUp" :duration="1">
+      <div class="container-fluid">
+        <div class="row">
+          <ExperienceColumn
+            :posts="content.academic"
+            title="Education"
+            class="col-12 col-md left"
+          />
+          <ExperienceColumn
+            :posts="content.professional"
+            title="Professional"
+            class="col-12 col-md right"
+          />
+        </div>
+      </div>
+    </AnimateOnVisible>
   </section>
 </template>
 
@@ -36,22 +36,20 @@ export default {
   props: ["content"],
   components: {
     Title,
-    ExperienceColumn
-  }
+    ExperienceColumn,
+  },
 };
 </script>
 
 <style scoped lang="scss">
-@import "@/styles/constants.scss";
-
-$linear: map-get($colors, dark);
+$linear: map.get($colors, dark);
 
 #experience {
-  background-color: lighten(map-get($colors, primary), 5%);
+  background-color: color.adjust(map.get($colors, primary), $lightness: 5%);
 }
 
 .title {
-  color: map-get($colors, light);
+  color: map.get($colors, light);
 }
 
 .row {
@@ -59,7 +57,7 @@ $linear: map-get($colors, dark);
   text-align: center;
 }
 
-@media (min-width: #{map-get($breakpoints, small)}) {
+@media (min-width: #{map.get($breakpoints, small)}) {
   .left {
     text-align: right;
     border-right: 2px solid $linear;
@@ -69,24 +67,24 @@ $linear: map-get($colors, dark);
   }
 }
 
-@media (max-width: #{map-get($breakpoints, small)}) {
+@media (max-width: #{map.get($breakpoints, small)}) {
   .right {
     margin-top: 20px;
   }
   .left:before {
-    content : "";
+    content: "";
     position: absolute;
-    left    : 20%;
-    bottom  : 0;
-    height  : 2px;
-    width   : 60%;  /* or 100px */
-    border-bottom:2px solid $linear;
-}
+    left: 20%;
+    bottom: 0;
+    height: 2px;
+    width: 60%; /* or 100px */
+    border-bottom: 2px solid $linear;
+  }
 }
 
-/deep/ .text-wrapper {
+:deep(.text-wrapper) {
   &:after {
-    border-bottom: 1px solid map-get($colors, dark);
+    border-bottom: 1px solid map.get($colors, dark);
   }
 }
 </style>

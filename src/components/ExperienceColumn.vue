@@ -19,8 +19,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/styles/constants.scss";
-
 .resume-item {
   margin-bottom: 25px;
   p {
@@ -36,9 +34,9 @@ export default {
   }
 }
 .color-light {
-  color: map-get($colors, light);
+  color: map.get($colors, light);
 }
 .color-darker {
-  color: map-get($colors, dark);
+  color: map.get($colors, dark);
 }
 </style>

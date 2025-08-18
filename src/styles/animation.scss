@@ -1,3 +1,25 @@
 $animationDuration: 1s !default;
 
-@import "~vue2-animate/src/sass/vue2-animate.scss";
+// Modern CSS animations for Vue 3
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fadeLeft-enter-active {
+  animation: fadeInLeft 0.5s ease-in-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

@@ -1,5 +1,4 @@
-@import './constants';
-@import './animation.scss';
+@use './animation.scss';
 
 body,
 html {
@@ -13,7 +12,7 @@ body {
   position: relative;
   line-height: 1.4;
   font-weight: normal;
-  color: lighten(map-get($colors, primary), 100%);
+  color: color.adjust(map.get($colors, primary), $lightness: 100%);
 
   &.loading {
     overflow: scroll;
@@ -39,10 +38,10 @@ section {
 }
 
 a {
-  color: map-get($colors, secondary);
+  color: map.get($colors, secondary);
 
   &:hover {
-    color: map-get($colors, dark);
+    color: map.get($colors, dark);
     text-decoration: none;
   }
 }
@@ -52,11 +51,11 @@ li {
 }
 
 .timeline {
-  @media (max-width: #{map-get($breakpoints, medium)}) {
+  @media (max-width: #{map.get($breakpoints, medium)}) {
     width: 100%;
   }
 
-  @media (min-width: #{map-get($breakpoints, medium)}) {
+  @media (min-width: #{map.get($breakpoints, medium)}) {
     width: 60%
   }
 }
