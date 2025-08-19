@@ -215,10 +215,10 @@ const isLoading = ref(false);
 const status = ref("");
 const statusMessage = ref("");
 
-// EmailJS configuration (you'll need to replace these with your actual values)
-const EMAILJS_SERVICE_ID = "your_service_id";
-const EMAILJS_TEMPLATE_ID = "your_template_id";
-const EMAILJS_PUBLIC_KEY = "your_public_key";
+// EmailJS configuration from environment variables
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 // Form validation
 const validateForm = () => {
@@ -277,26 +277,27 @@ const sendMessage = async () => {
   status.value = "";
 
   try {
-    // TODO: Replace with your actual EmailJS configuration
-    console.log("Sending email with form data:", form);
+    // Check if EmailJS configuration is available
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      throw new Error(
+        "EmailJS configuration is missing. Please check your environment variables."
+      );
+    }
 
-    // Simulate API call for now
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // Initialize EmailJS
+    emailjs.init(EMAILJS_PUBLIC_KEY);
 
-    /* Uncomment this when you have your EmailJS credentials:
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
-        from_name: form.name,
-        from_email: form.email,
-        subject: form.subject,
-        message: form.message,
-        to_email: userInfo.value.email
-      },
-      EMAILJS_PUBLIC_KEY
-    );
-    */
+    // Send email using EmailJS
+    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name: form.name,
+      from_email: form.email,
+      subject: form.subject,
+      message: form.message,
+      to_email: userInfo.value.email,
+      to_name: userInfo.value.name || "Portfolio Owner",
+    });
+
+    // console.log("Email sent successfully:", result);
 
     status.value = "success";
     statusMessage.value =
@@ -307,8 +308,14 @@ const sendMessage = async () => {
   } catch (error) {
     console.error("Error sending email:", error);
     status.value = "error";
-    statusMessage.value =
-      "Sorry, there was an error sending your message. Please try again or contact me directly via email.";
+
+    if (error.message.includes("EmailJS configuration")) {
+      statusMessage.value =
+        "Email service is not configured. Please contact me directly via email.";
+    } else {
+      statusMessage.value =
+        "Sorry, there was an error sending your message. Please try again or contact me directly via email.";
+    }
   } finally {
     isLoading.value = false;
 
@@ -417,7 +424,7 @@ const sendMessage = async () => {
   }
 
   .subtitle {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2rem;
     line-height: 1.6;
@@ -442,7 +449,7 @@ const sendMessage = async () => {
 
     .label {
       display: block;
-      font-size: 1rem;
+      font-size: 1.125rem;
       color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
     }
@@ -450,7 +457,7 @@ const sendMessage = async () => {
     .value {
       display: block;
       color: white;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
     }
   }
 
@@ -458,7 +465,7 @@ const sendMessage = async () => {
     h3 {
       color: white;
       margin-bottom: 1rem;
-      font-size: 1.25rem;
+      font-size: 1.375rem;
       font-weight: 600;
     }
 
@@ -471,11 +478,11 @@ const sendMessage = async () => {
     .social-link {
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      padding: 0.75rem 1.25rem;
+      padding: 0.875rem 1.375rem;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 20px;
       transition: all 0.3s ease;
-      font-size: 1rem;
+      font-size: 1.125rem;
       font-weight: 500;
 
       &:hover {
@@ -499,7 +506,7 @@ const sendMessage = async () => {
   max-width: none !important;
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.875rem;
     font-weight: bold;
     color: #2d3748;
     margin-bottom: 1.5rem;
@@ -515,7 +522,7 @@ const sendMessage = async () => {
       font-weight: 600;
       color: #4a5568;
       margin-bottom: 0.5rem;
-      font-size: 1rem;
+      font-size: 1.125rem;
     }
 
     input,
@@ -541,7 +548,7 @@ const sendMessage = async () => {
 
       &::placeholder {
         color: #a0aec0;
-        font-size: 1rem;
+        font-size: 1.125rem;
       }
     }
 
@@ -552,13 +559,13 @@ const sendMessage = async () => {
 
     .error-message {
       color: #e53e3e;
-      font-size: 1rem;
+      font-size: 1.125rem;
       margin-top: 0.25rem;
       display: block;
     }
 
     .char-count {
-      font-size: 0.875rem;
+      font-size: 1rem;
       color: #a0aec0;
       text-align: right;
       margin-top: 0.25rem;
@@ -621,7 +628,7 @@ const sendMessage = async () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.125rem;
 
   .icon {
     width: 1.25rem;
@@ -662,7 +669,7 @@ const sendMessage = async () => {
     }
 
     .subtitle {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
     }
   }
 
@@ -670,31 +677,31 @@ const sendMessage = async () => {
     padding: 1.5rem;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.625rem;
     }
 
     .form-group {
       label {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
 
       input,
       select,
       textarea {
-        font-size: 1rem;
-        padding: 0.875rem;
+        font-size: 1.125rem;
+        padding: 1rem;
       }
     }
 
     .submit-btn {
-      font-size: 1rem;
-      padding: 1rem;
+      font-size: 1.125rem;
+      padding: 1.125rem;
     }
   }
 
   .contact-header .back-link {
-    font-size: 1rem;
-    padding: 0.625rem 1rem;
+    font-size: 1.125rem;
+    padding: 0.75rem 1.125rem;
   }
 }
 
