@@ -350,10 +350,10 @@ const sendMessage = async () => {
     gap: 0.5rem;
     color: white;
     text-decoration: none;
-    padding: 0.75rem 1.25rem;
+    padding: 0.875rem 1.375rem;
     border-radius: 8px;
     transition: all 0.3s ease;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 500;
 
     .icon {
@@ -416,7 +416,7 @@ const sendMessage = async () => {
   max-width: none !important;
 
   h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     color: white;
     margin-bottom: 1rem;
@@ -424,7 +424,7 @@ const sendMessage = async () => {
   }
 
   .subtitle {
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2rem;
     line-height: 1.6;
@@ -449,7 +449,7 @@ const sendMessage = async () => {
 
     .label {
       display: block;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
     }
@@ -457,7 +457,7 @@ const sendMessage = async () => {
     .value {
       display: block;
       color: white;
-      font-size: 1.25rem;
+      font-size: 1.375rem;
     }
   }
 
@@ -465,7 +465,7 @@ const sendMessage = async () => {
     h3 {
       color: white;
       margin-bottom: 1rem;
-      font-size: 1.375rem;
+      font-size: 1.5rem;
       font-weight: 600;
     }
 
@@ -478,11 +478,11 @@ const sendMessage = async () => {
     .social-link {
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      padding: 0.875rem 1.375rem;
+      padding: 1rem 1.5rem;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 20px;
       transition: all 0.3s ease;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       font-weight: 500;
 
       &:hover {
@@ -506,7 +506,7 @@ const sendMessage = async () => {
   max-width: none !important;
 
   h2 {
-    font-size: 1.875rem;
+    font-size: 2.125rem;
     font-weight: bold;
     color: #2d3748;
     margin-bottom: 1.5rem;
@@ -522,17 +522,17 @@ const sendMessage = async () => {
       font-weight: 600;
       color: #4a5568;
       margin-bottom: 0.5rem;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      padding: 1rem;
+      padding: 1.125rem;
       border: 2px solid #e2e8f0;
       border-radius: 8px;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       transition: border-color 0.3s ease;
       background: white;
 
@@ -548,7 +548,7 @@ const sendMessage = async () => {
 
       &::placeholder {
         color: #a0aec0;
-        font-size: 1.125rem;
+        font-size: 1.25rem;
       }
     }
 
@@ -559,13 +559,13 @@ const sendMessage = async () => {
 
     .error-message {
       color: #e53e3e;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       margin-top: 0.25rem;
       display: block;
     }
 
     .char-count {
-      font-size: 1rem;
+      font-size: 1.125rem;
       color: #a0aec0;
       text-align: right;
       margin-top: 0.25rem;
@@ -579,9 +579,9 @@ const sendMessage = async () => {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 1.25rem;
+  padding: 1.375rem;
   border-radius: 8px;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -628,7 +628,7 @@ const sendMessage = async () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 
   .icon {
     width: 1.25rem;
@@ -665,11 +665,11 @@ const sendMessage = async () => {
 @media (max-width: 768px) {
   .contact-info {
     h1 {
-      font-size: 2.25rem;
+      font-size: 2.75rem;
     }
 
     .subtitle {
-      font-size: 1.25rem;
+      font-size: 1.375rem;
     }
   }
 
@@ -677,37 +677,37 @@ const sendMessage = async () => {
     padding: 1.5rem;
 
     h2 {
-      font-size: 1.625rem;
+      font-size: 1.875rem;
     }
 
     .form-group {
       label {
-        font-size: 1rem;
+        font-size: 1.125rem;
       }
 
       input,
       select,
       textarea {
-        font-size: 1.125rem;
-        padding: 1rem;
+        font-size: 1.25rem;
+        padding: 1.125rem;
       }
     }
 
     .submit-btn {
-      font-size: 1.125rem;
-      padding: 1.125rem;
+      font-size: 1.25rem;
+      padding: 1.25rem;
     }
   }
 
   .contact-header .back-link {
-    font-size: 1.125rem;
-    padding: 0.75rem 1.125rem;
+    font-size: 1.25rem;
+    padding: 0.875rem 1.25rem;
   }
 }
 
 @media (max-width: 600px) {
   .contact-info h1 {
-    font-size: 2rem;
+    font-size: 2.375rem;
   }
 
   .contact-form-container {
