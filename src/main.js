@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
 import AnimateOnVisible from "./components/AnimateOnVisible.vue"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -11,6 +12,7 @@ library.add(faCopyright, faCode, faFacebookSquare, faInstagramSquare, faLinkedin
 
 const app = createApp(App)
 
+app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('AnimateOnVisible', AnimateOnVisible)
 

@@ -9,6 +9,13 @@
         <AnimateOnVisible name="fadeUp" ::duration="1">
           <p>{{ user.status }}</p>
         </AnimateOnVisible>
+        <AnimateOnVisible name="fadeUp" ::duration="1.5">
+          <div class="contact-actions">
+            <router-link to="/contact" class="contact-btn">
+              Get In Touch
+            </router-link>
+          </div>
+        </AnimateOnVisible>
       </div>
     </div>
   </header>
@@ -66,6 +73,39 @@ export default {
 
   hr {
     border: 1px solid whitesmoke;
+  }
+
+  .contact-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: transparent;
+    color: whitesmoke;
+    text-decoration: none;
+    border: 2px solid whitesmoke;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: whitesmoke;
+      color: map.get($colors, dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 
