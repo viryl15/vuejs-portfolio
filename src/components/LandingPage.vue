@@ -14,6 +14,9 @@
             <router-link to="/contact" class="contact-btn">
               Get In Touch
             </router-link>
+            <div class="resume-download-hero">
+              <ResumeDownload variant="compact" />
+            </div>
           </div>
         </AnimateOnVisible>
       </div>
@@ -22,9 +25,14 @@
 </template>
 
 <script>
+import ResumeDownload from "./ResumeDownload.vue";
+
 export default {
   name: "Landing-Page",
   props: ["user"],
+  components: {
+    ResumeDownload,
+  },
 };
 </script>
 
@@ -78,6 +86,21 @@ export default {
   .contact-actions {
     text-align: center;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 25px;
+    }
+  }
+
+  .resume-download-hero {
+    display: flex;
+    justify-content: center;
   }
 
   .contact-btn {
