@@ -10,23 +10,26 @@
 
     <div class="container-fluid center-block">
       <article class="content text-center">
-        <div class="timeline-container mx-auto">
-          <AnimateOnVisible
+        <div class="timeline-container mx-auto" ref="projectsContainer">
+          <div
             v-for="(post, index) in projects"
             :key="index"
-            name="fadeLeft"
-            :duration="0.5"
+            class="stagger-item project-hover"
+            :style="{ '--stagger-delay': index }"
           >
-            <Timeline
-              :date="new Date(post.delivery_date)"
-              :title="post.title"
-              :description="post.description"
-              :thumbnail="getImgUrl(post.image)"
-              :color="post.color"
-              :category="post.tag"
-              icon="code"
-            />
-          </AnimateOnVisible>
+            <AnimateOnVisible name="fadeLeft" :duration="0.5">
+              <Timeline
+                :date="new Date(post.delivery_date)"
+                :title="post.title"
+                :description="post.description"
+                :thumbnail="getImgUrl(post.image)"
+                :color="post.color"
+                :category="post.tag"
+                icon="code"
+                class="timeline-item-enhanced"
+              />
+            </AnimateOnVisible>
+          </div>
         </div>
       </article>
     </div>
@@ -34,8 +37,10 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
 import Title from "./Title.vue";
 import Timeline from "./Timeline.vue";
+import { useStaggerAnimation } from "../composables/useStaggerAnimation.js";
 
 export default {
   name: "Projects",
@@ -43,6 +48,24 @@ export default {
   components: {
     Title,
     Timeline,
+  },
+  setup() {
+    const projectsContainer = ref(null);
+
+    // Initialize stagger animation
+    const { containerRef } = useStaggerAnimation({
+      delay: 150,
+      duration: 800,
+      selector: ".stagger-item",
+    });
+
+    onMounted(() => {
+      containerRef.value = projectsContainer.value;
+    });
+
+    return {
+      projectsContainer,
+    };
   },
   methods: {
     getImgUrl(img) {
@@ -68,6 +91,54 @@ $linear: map.get($colors, dark);
 :deep(.text-wrapper) {
   &:after {
     border-bottom: 1px solid map.get($colors, dark);
+  }
+}
+
+// Enhanced project items with hover effects
+.stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: calc(var(--stagger-delay, 0) * 150ms);
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-hover {
+  // Inline hover-lift effect instead of @extend
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    .timeline-item-enhanced {
+      transform: scale(1.02);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.timeline-item-enhanced {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  overflow: hidden;
+
+  &:hover {
+    .project-image {
+      transform: scale(1.05);
+    }
   }
 }
 

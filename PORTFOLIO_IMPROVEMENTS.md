@@ -3,10 +3,10 @@
 This document outlines comprehensive improvements for Dylan Zambou's Vue.js portfolio. Each item includes checkboxes to track progress as we implement features step by step.
 
 ## 📋 Progress Overview
-- **Priority 1 (Quick Wins)**: 2/5 completed
+- **Priority 1 (Quick Wins)**: 3/5 completed
 - **Priority 2 (Medium-term)**: 0/5 completed
 - **Priority 3 (Advanced)**: 0/15 completed
-- **Total Progress**: 2/25 completed
+- **Total Progress**: 3/25 completed
 
 ---
 
@@ -41,12 +41,12 @@ This document outlines comprehensive improvements for Dylan Zambou's Vue.js port
   - [x] Style download button with icon
   - [x] Add hover animations
 
-- [ ] **Enhance Loading States & Transitions**
-  - [ ] Add skeleton loading components
-  - [ ] Implement page transition animations
-  - [ ] Add hover effects on interactive elements
-  - [ ] Create loading spinner component
-  - [ ] Add stagger animations for lists
+- [x] **Enhance Loading States & Transitions**
+  - [x] Add skeleton loading components
+  - [x] Implement page transition animations
+  - [x] Add hover effects on interactive elements
+  - [x] Create loading spinner component
+  - [x] Add stagger animations for lists
 
 ---
 
